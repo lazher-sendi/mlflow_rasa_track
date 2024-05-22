@@ -1,0 +1,19 @@
+name: track_example
+
+
+python_env: environment.yml
+
+entry_points:
+  train:
+    command: "python src/train.py"
+  test:
+    command: "python src/test.py"
+  main:
+    parameters:
+          train_data: {type: string, default: "files/training_data.yml"}
+          config: {type: string, default: "files/config.yml"}
+          validation_data: {type: string, default: "files/test_data.yml"}
+    command: "python main.py
+                             --config {config}
+                             --train-data {train_data}
+                             --validation-data {validation_data}"
